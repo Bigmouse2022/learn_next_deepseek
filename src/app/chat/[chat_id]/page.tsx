@@ -56,22 +56,22 @@ export default function Page() {
   }, [messages]);
 
   //自动回复新会话
-  const handleFirstMessage = async (model: string) => {
+  const handleFirstMessage = async () => {
     if (chat?.data?.title && previousMessages?.data?.length === 0) {
       await append({
         role: "user",
-        content: chat?.data?.title,
-      }),
-        {
-          model: model,
-          chat_id: chat_id,
-          chat_user_id: chat?.data?.useId,
-        };
+        content: chat?.data?.title,})
+      // ,
+      //   {
+      //     model: model,
+      //     chat_id: chat_id,
+      //     chat_user_id: chat?.data?.useId,
+      //   }
     }
   };
   useEffect(() => {
     setModel(chat?.data?.model);
-    handleFirstMessage(chat?.data?.model);
+    handleFirstMessage();
   }, [chat?.data?.title, previousMessages]);
 
   return (
