@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import EastIcon from "@mui/icons-material/East";
 import axios from 'axios'
-import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
+import {  useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";

@@ -2,7 +2,6 @@ import { createMessage } from "@/db";
 import { createDeepSeek } from "@ai-sdk/deepseek";
 import { auth } from "@clerk/nextjs/server";
 import { streamText } from "ai";
-import { error } from "console";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -13,7 +12,7 @@ const deepseek = createDeepSeek({
 });
 
 export async function POST(req: Request) {
-  const { messages, model, chat_id, chat_user_id } = await req.json();
+  const { messages, chat_id, chat_user_id } = await req.json();
 
   //消息存储
   //登录鉴权

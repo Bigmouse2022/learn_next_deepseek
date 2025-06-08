@@ -4,8 +4,10 @@ import { useChat } from "@ai-sdk/react";
 import { useEffect, useRef, useState } from "react";
 import EastIcon from "@mui/icons-material/East";
 import { useParams } from "next/navigation";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+
+import Markdown from "react-markdown";
 export default function Page() {
   //拿到chat_id
   const { chat_id } = useParams();
@@ -19,31 +21,30 @@ export default function Page() {
     },
   });
 
-//每次刷新要读取之前的数据
+  //每次刷新要读取之前的数据
   const { data: previousMessages } = useQuery({
     queryKey: ["message", chat_id],
     queryFn: () => {
       return axios.post(`/api/get-messages`, {
         chat_id: chat_id,
-        chat_user_id:chat?.data?.userId
+        chat_user_id: chat?.data?.userId,
       });
     },
-    enabled:!!chat?.data?.id
+    enabled: !!chat?.data?.id,
   });
-
 
   const [model, setModel] = useState("deepseek-v3");
   const handleChangeModel = () => {
     setModel(model === "deepseek-v3" ? "deepseek-r1" : "deepseek-v3");
   };
   //信息，输入框内容，输入框改变函数，提交函数
-  const { messages, input, handleInputChange, handleSubmit,append } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, append } = useChat({
     body: {
       model: model,
       chat_id: chat_id,
-      chat_user_id:chat?.data?.useId
+      chat_user_id: chat?.data?.useId,
     },
-    initialMessages:previousMessages?.data
+    initialMessages: previousMessages?.data,
   });
 
   //信息滑动
@@ -54,24 +55,24 @@ export default function Page() {
     }
   }, [messages]);
 
- //自动回复新会话
- const handleFirstMessage = async(model:string)=>{
-   if(chat?.data?.title && previousMessages?.data?.length===0){
-    await append({
-      role:'user',
-      content:chat?.data?.title
-    }),{
-        model: model,
-      chat_id: chat_id,
-      chat_user_id:chat?.data?.useId
-
+  //自动回复新会话
+  const handleFirstMessage = async (model: string) => {
+    if (chat?.data?.title && previousMessages?.data?.length === 0) {
+      await append({
+        role: "user",
+        content: chat?.data?.title,
+      }),
+        {
+          model: model,
+          chat_id: chat_id,
+          chat_user_id: chat?.data?.useId,
+        };
     }
-   }
- }
- useEffect(()=>{
-  setModel(chat?.data?.model)
-  handleFirstMessage(chat?.data?.model)
- },[chat?.data?.title,previousMessages])
+  };
+  useEffect(() => {
+    setModel(chat?.data?.model);
+    handleFirstMessage(chat?.data?.model);
+  }, [chat?.data?.title, previousMessages]);
 
   return (
     <div className="flex flex-col h-screen justify-between items-center">
@@ -91,13 +92,13 @@ export default function Page() {
                 : "justify-end ml-10"
             }`}
             >
-              <p
-                className={`inline-block p-2 rounded-lg ${
+              <div
+                className={`block p-2 rounded-lg ${
                   message?.role === "assistant" ? "bg-blue-300" : "bg-slate-100"
                 }`}
               >
-                {message?.content}
-              </p>
+                <Markdown>{message?.content}</Markdown>
+              </div>
             </div>
           ))}
         </div>

@@ -1,8 +1,8 @@
 import { getChats } from "@/db";
 import { auth } from "@clerk/nextjs/server";
-import { useId } from "react";
 
-export async function POST(req: Request) {
+export async function POST() {
+
      //读取当前登录用户的id
     const {userId} =await auth()
     if(userId){

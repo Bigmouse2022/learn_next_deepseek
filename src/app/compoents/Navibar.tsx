@@ -3,7 +3,6 @@ import { ChatModel } from "@/db/schema";
 import { useClerk, useUser } from "@clerk/nextjs";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
@@ -38,21 +37,19 @@ export default function Navibar() {
   //登陆页面没有导航栏
   const isntSee = { path: "/sign-in" };
   if (pathname == isntSee.path) {
-    console.log(pathname);
     return <div></div>;
   }
   const isntSee2 = { path: "/sign-in/create/verify-email-address" };
   if (pathname == isntSee2.path) {
-    console.log(pathname);
     return <div></div>;
   }
   const isntSee3 = { path: "/sign-in/factor-one" };
   if (pathname == isntSee3.path) {
-    console.log(pathname);
     return <div></div>;
   }
-// 暂时有3个邮箱
-// 2798605781@qq.com 2798605781  *****  hpj2798605781@163.com 2798605781 **** 1144241903@qq.com 1144241903
+
+  // 暂时有3个邮箱
+  // 2798605781@qq.com 2798605781  *****  hpj2798605781@163.com 2798605781 **** 1144241903@qq.com 1144241903
   return (
     <div className="w-1/5 h-screen bg-gray-50">
       <div className="h-4"></div>
@@ -74,9 +71,12 @@ export default function Navibar() {
             创建新会话
           </p>
         </div>
-
+        <div className="h-4"></div>
         {/* 目录 */}
-        <div className="flex flex-col items-center justify-center gap-2 ">
+        <div
+          className="flex flex-col items-center justify-center gap-2 
+        inline-block overflow-hidden text-2xl  whitespace-nowrap"
+        >
           {chats?.data?.map((chat: ChatModel) => (
             <div
               className="w-full h-10"
@@ -91,8 +91,9 @@ export default function Navibar() {
               >
                 <p
                   className={`h-full w-2/3 bg-blue-100 rounded-lg flex items-center
-        justify-center font-thin
+         font-thin overflow-hidden whitespace-nowrap text-ellipsis justify-around text-xl
         ${pathname === `/chat/${chat.id}` ? "text-blue-700" : ""}`}
+                dir="rtl"
                 >
                   {chat.title}
                 </p>
