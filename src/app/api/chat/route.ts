@@ -7,8 +7,8 @@ import { streamText } from "ai";
 export const maxDuration = 30;
 
 const deepseek = createDeepSeek({
-  apiKey: process.env.DEEPSEEL_API_KEY,
-  baseURL: process.env.BASE_URL,
+  apiKey: process.env.BAILIAN_API_KEY,
+  baseURL: process.env.BAILIAN_BASE_URL,
 });
 
 export async function POST(req: Request) {
