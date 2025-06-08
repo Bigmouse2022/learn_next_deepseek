@@ -8,7 +8,8 @@ export const maxDuration = 30;
 
 const deepseek = createDeepSeek({
   apiKey: process.env.BAILIAN_API_KEY,
-  baseURL: process.env.BAILIAN_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BAILIAN_BASE_URL,
+
 });
 
 export async function POST(req: Request) {
