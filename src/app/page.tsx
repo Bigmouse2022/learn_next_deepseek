@@ -54,18 +54,18 @@ export default function Home() {
     >
       <Navibar />
 
-      <div className="w-4/5 h-screen">
-        <div className="h-screen flex flex-col items-center">
+      <div className="w-4/5 h-screen bg-gray-950/80">
+        <div className="h-screen flex flex-col justify-between  items-center ">
           <div className="h-1/5"></div>
           <div className="w-1/2">
-            <p className="text-bold text-2xl text-center">有什么可以帮你的</p>
+            <p className="justify-center text-bold text-white text-5xl text-center">有什么可以帮你的</p>
 
             <div
-              className="flex flex-col items-center justify-center mt-4 
-shadow-lg border-[1px] border-gray-300 h-32 rounded-lg"
+              className="flex flex-col items-center  mt-70 mb-10
+  h-32 rounded-lg bg-gray-950/10"
             >
               <textarea
-                className="w-full rounded-lg p-3 focus:outline-none"
+                className="w-full rounded-lg p-3 focus:outline-none text-white"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               ></textarea>
@@ -75,16 +75,16 @@ shadow-lg border-[1px] border-gray-300 h-32 rounded-lg"
             px-2 py-1 ml-2 cursor-pointer 
             ${
               model === "deepseek-r1"
-                ? "border-blue-300 bg-blue-200"
+                ? "border-gray-300 bg-gray-700"
                 : "border-gray-300"
             }`}
                   onClick={handleChangeModel}
                 >
-                  <p className="text-sm">深度思考{model} </p>
+                  <p className="text-sm text-white">深度思考{model} </p>
                 </div>
                 <div
                   className="flex items-center justify-center border-2 mr-4 border-black p-1 
-          rounded-full"
+          rounded-full text-white"
                   onClick={handleSubmit}
                 >
                   <EastIcon></EastIcon>

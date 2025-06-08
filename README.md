@@ -592,3 +592,11 @@ npm i axios
                      版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
 
 原文链接：https://blog.csdn.net/solocao/article/details/141197392
+
+
+## vercel部署问题
+要给项目目录下的.env里面的clerk变量、阿里云百炼变量、以及数据库变量配上
+
+![image-20250608163655774](C:\Users\86183\AppData\Roaming\Typora\typora-user-images\image-20250608163655774.png)
+
+![image-20250608163722365](C:\Users\86183\AppData\Roaming\Typora\typora-user-images\image-20250608163722365.png)

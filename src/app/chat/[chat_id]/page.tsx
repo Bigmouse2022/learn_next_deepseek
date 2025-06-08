@@ -83,11 +83,11 @@ export default function Page() {
     >
       <Navibar />
 
-      <div className="w-4/5 h-screen">
+      <div className="w-4/5 h-screen bg-gray-950/80">
         <div className="flex flex-col h-screen justify-between items-center">
           <div
             className="flex flex-col w-2/3 gap-8 overflow-y-auto
-         justify-between flex-1"
+         justify-between flex-1 no-scrollbar"
           >
             <div className="h-4"></div>
             <div className="flex flex-col gap-8 flex-1 ">
@@ -102,10 +102,10 @@ export default function Page() {
             }`}
                 >
                   <div
-                    className={`block p-2 rounded-lg ${
+                    className={`block p-2 rounded-lg text-white ${
                       message?.role === "assistant"
-                        ? "bg-blue-300"
-                        : "bg-slate-100"
+                        ? "bg-gray-950/10"
+                        : "bg-gray-950/10"
                     }`}
                   >
                     <Markdown>{message?.content}</Markdown>
@@ -118,7 +118,7 @@ export default function Page() {
           {/*输入框*/}
           <div
             className="flex flex-col items-center justify-center mt-4 
-shadow-lg border-[1px] border-gray-300 h-32 rounded-lg w-2/3"
+ h-32 rounded-lg w-2/3 mb-10 bg-gray-950/10 text-white"
           >
             <textarea
               className="w-full rounded-lg p-3 focus:outline-none"
@@ -131,16 +131,16 @@ shadow-lg border-[1px] border-gray-300 h-32 rounded-lg w-2/3"
             px-2 py-1 ml-2 cursor-pointer 
             ${
               model === "deepseek-r1"
-                ? "border-blue-300 bg-blue-200"
+                ? "border-gray-300 bg-gray-700"
                 : "border-gray-300"
             }`}
                 onClick={handleChangeModel}
               >
-                <p className="text-sm">深度思考{model} </p>
+                <p className="text-sm text-white">深度思考{model} </p>
               </div>
               <div
                 className="flex items-center justify-center border-2 mr-4 border-black p-1 
-          rounded-full"
+          rounded-full text-white "
                 onClick={handleSubmit}
               >
                 <EastIcon></EastIcon>

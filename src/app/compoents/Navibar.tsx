@@ -51,11 +51,11 @@ export default function Navibar() {
   // 暂时有3个邮箱
   // 2798605781@qq.com 2798605781  *****  hpj2798605781@163.com 2798605781 **** 1144241903@qq.com 1144241903
   return (
-    <div className="w-1/5 h-screen bg-gray-50">
+    <div className="w-1/5 h-screen bg-gray-900/70 text-white">
       <div className="h-4"></div>
-      <div className="flex flex-col h-9/10 bg-gray-50">
+      <div className="flex flex-col h-9/10 ">
         <div className="flex items-center justify-center">
-          <p className="font-bold text-2xl">Deepseek</p>
+          <p className="font-bold text-white text-3xl">仿Deepseek</p>
         </div>
         <div
           className="h-10 flex items-center justify-center mt-4
@@ -65,7 +65,7 @@ export default function Navibar() {
           }}
         >
           <p
-            className="h-full w-2/3 bg-blue-100 rounded-lg flex items-center
+            className="h-full w-70 bg-gray-500/50 rounded-lg flex items-center
         justify-center font-thin"
           >
             创建新会话
@@ -73,42 +73,65 @@ export default function Navibar() {
         </div>
         <div className="h-4"></div>
         {/* 目录 */}
-        <div
-          className="flex flex-col items-center justify-center gap-2 
-        inline-block overflow-hidden text-2xl  whitespace-nowrap"
+        <div className="flex flex-col items-center justify-center gap-2 h-100 inline-block  whitespace-nowrap overflow-y-auto no-scrollbar">
+          {chats?.data?.map((chat: ChatModel) => {
+            const isActive = pathname === `/chat/${chat.id}`;
+            return (
+              <div
+                className={`w-70 h-7   rounded-lg ml-3 group 
+                ${isActive ? "bg-gray-500/50" : " hover:bg-gray-500/50"}`} // 添加 group 类bg-gray-500/50
+                key={chat.id}
+                onClick={() => router.push(`/chat/${chat.id}`)}
+              >
+                <div className="h-full flex flex-col items-center mt-1 cursor-pointer ">
+                  <p
+                    className={`h-full w-60 flex items-center justify-start text-xs p-truncates mt-1
+              ${
+                isActive
+                  ? "font-bold text-white " // 当前页面样式
+                  : "font-thin text-gray-300 group-hover:text-white"
+              }`} // 悬停样式
+                    dir="ltr"
+                  >
+                    {chat.title}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        {/* <div
+          className="flex flex-col items-center justify-center gap-2 h-100
+        inline-block text-2xl  whitespace-nowrap overflow-y-auto  no-scrollbar"
         >
           {chats?.data?.map((chat: ChatModel) => (
             <div
-              className="w-full h-10"
+              className="w-70 h-10 bg-gray-500/50 rounded-lg ml-3"
               key={chat.id}
               onClick={() => {
                 router.push(`/chat/${chat.id}`);
               }}
             >
-              <div
-                className="h-10 flex items-center justify-center mt-4
-      cursor-pointer"
-              >
-                <p
-                  className={`h-full w-2/3 bg-blue-100 rounded-lg flex items-center
-         font-thin overflow-hidden whitespace-nowrap text-ellipsis justify-around text-xl
-        ${pathname === `/chat/${chat.id}` ? "text-blue-700" : ""}`}
-                dir="rtl"
+              <div className="h-full flex flex-col items-center mt-1 cursor-pointer ">
+                <p className={`h-full w-60  flex items-center  justify-start text-xl p-truncates
+               ${pathname === `/chat/${chat.id}` ? "font-bold" : "font-thin"}`}
+                  dir="ltr"
                 >
                   {chat.title}
                 </p>
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
-      <div className="h-10 flex flex-col items-center justify-center mt-4 cursor-pointer">
+      <div className="h-1"></div>
+      <div className="h-10 flex flex-col items-center justify-center cursor-pointe r">
         <button
-          className="h-full w-2/3 bg-blue-700 rounded-lg flex items-center
+          className="h-full w-2/3 bg-gray-500 rounded-lg flex items-center 
         justify-center font-thin"
           onClick={handleLogout}
         >
-          Logout
+          登录/登出
         </button>
       </div>
     </div>
