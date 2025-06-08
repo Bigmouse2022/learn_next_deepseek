@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import Navibar from "@/app/compoents/Navibar";
 import QueryClientProvider from "@/app/compoents/QueryClientProvider";
 
 
@@ -31,13 +30,14 @@ export default function RootLayout({
       <QueryClientProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased 
-        flex flex-row`}
+           className={`${geistSans.variable} ${geistMono.variable} `}
         >
 
-            <Navibar />
+            {/* <Navibar /> */}
 
-          <div className="w-4/5 h-screen">{children}</div>
+          <div 
+          // className="w-4/5 h-screen"
+          >{children}</div>
         </body>
       </html>
       </QueryClientProvider>

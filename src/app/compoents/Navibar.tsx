@@ -35,18 +35,18 @@ export default function Navibar() {
   };
 
   //登陆页面没有导航栏
-  const isntSee = { path: "/sign-in" };
-  if (pathname == isntSee.path) {
-    return <div></div>;
-  }
-  const isntSee2 = { path: "/sign-in/create/verify-email-address" };
-  if (pathname == isntSee2.path) {
-    return <div></div>;
-  }
-  const isntSee3 = { path: "/sign-in/factor-one" };
-  if (pathname == isntSee3.path) {
-    return <div></div>;
-  }
+  // const isntSee = { path: "/sign-in" };
+  // if (pathname == isntSee.path) {
+  //   return <div></div>;
+  // }
+  // const isntSee2 = { path: "/sign-in/create/verify-email-address" };
+  // if (pathname == isntSee2.path) {
+  //   return <div></div>;
+  // }
+  // const isntSee3 = { path: "/sign-in/factor-one" };
+  // if (pathname == isntSee3.path) {
+  //   return <div></div>;
+  // }
 
   // 暂时有3个邮箱
   // 2798605781@qq.com 2798605781  *****  hpj2798605781@163.com 2798605781 **** 1144241903@qq.com 1144241903

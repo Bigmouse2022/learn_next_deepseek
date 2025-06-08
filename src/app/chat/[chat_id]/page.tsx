@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 import Markdown from "react-markdown";
+import Navibar from "@/app/compoents/Navibar";
 export default function Page() {
   //拿到chat_id
   const { chat_id } = useParams();
@@ -60,7 +61,8 @@ export default function Page() {
     if (chat?.data?.title && previousMessages?.data?.length === 0) {
       await append({
         role: "user",
-        content: chat?.data?.title,})
+        content: chat?.data?.title,
+      });
       // ,
       //   {
       //     model: model,
@@ -75,64 +77,75 @@ export default function Page() {
   }, [chat?.data?.title, previousMessages]);
 
   return (
-    <div className="flex flex-col h-screen justify-between items-center">
-      <div
-        className="flex flex-col w-2/3 gap-8 overflow-y-auto
+    <div
+      className=" antialiased 
+        flex flex-row"
+    >
+      <Navibar />
+
+      <div className="w-4/5 h-screen">
+        <div className="flex flex-col h-screen justify-between items-center">
+          <div
+            className="flex flex-col w-2/3 gap-8 overflow-y-auto
          justify-between flex-1"
-      >
-        <div className="h-4"></div>
-        <div className="flex flex-col gap-8 flex-1 ">
-          {messages?.map((message) => (
-            <div
-              key={message.id}
-              className={`rounded-lg flex flex-row 
+          >
+            <div className="h-4"></div>
+            <div className="flex flex-col gap-8 flex-1 ">
+              {messages?.map((message) => (
+                <div
+                  key={message.id}
+                  className={`rounded-lg flex flex-row 
             ${
               message?.role === "assistant"
                 ? "justify-start mr-18 "
                 : "justify-end ml-10"
             }`}
-            >
-              <div
-                className={`block p-2 rounded-lg ${
-                  message?.role === "assistant" ? "bg-blue-300" : "bg-slate-100"
-                }`}
-              >
-                <Markdown>{message?.content}</Markdown>
-              </div>
+                >
+                  <div
+                    className={`block p-2 rounded-lg ${
+                      message?.role === "assistant"
+                        ? "bg-blue-300"
+                        : "bg-slate-100"
+                    }`}
+                  >
+                    <Markdown>{message?.content}</Markdown>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="h-4" ref={endRef}></div>
-      {/*输入框*/}
-      <div
-        className="flex flex-col items-center justify-center mt-4 
-shadow-lg border-[1px] border-gray-300 h-32 rounded-lg w-2/3"
-      >
-        <textarea
-          className="w-full rounded-lg p-3 focus:outline-none"
-          value={input}
-          onChange={handleInputChange}
-        ></textarea>
-        <div className="flex flex-row items-center justify-between w-full h-12 mb-2">
+          </div>
+          <div className="h-4" ref={endRef}></div>
+          {/*输入框*/}
           <div
-            className={`flex flex-row items-center justify-center rounded-lg border-[1px]
+            className="flex flex-col items-center justify-center mt-4 
+shadow-lg border-[1px] border-gray-300 h-32 rounded-lg w-2/3"
+          >
+            <textarea
+              className="w-full rounded-lg p-3 focus:outline-none"
+              value={input}
+              onChange={handleInputChange}
+            ></textarea>
+            <div className="flex flex-row items-center justify-between w-full h-12 mb-2">
+              <div
+                className={`flex flex-row items-center justify-center rounded-lg border-[1px]
             px-2 py-1 ml-2 cursor-pointer 
             ${
               model === "deepseek-r1"
                 ? "border-blue-300 bg-blue-200"
                 : "border-gray-300"
             }`}
-            onClick={handleChangeModel}
-          >
-            <p className="text-sm">深度思考{model} </p>
-          </div>
-          <div
-            className="flex items-center justify-center border-2 mr-4 border-black p-1 
+                onClick={handleChangeModel}
+              >
+                <p className="text-sm">深度思考{model} </p>
+              </div>
+              <div
+                className="flex items-center justify-center border-2 mr-4 border-black p-1 
           rounded-full"
-            onClick={handleSubmit}
-          >
-            <EastIcon></EastIcon>
+                onClick={handleSubmit}
+              >
+                <EastIcon></EastIcon>
+              </div>
+            </div>
           </div>
         </div>
       </div>
