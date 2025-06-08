@@ -57,11 +57,12 @@ export default function Home() {
       <div className="w-4/5 h-screen bg-gray-950/80">
         <div className="h-screen flex flex-col justify-between  items-center ">
           <div className="h-1/5"></div>
-          <div className="w-1/2">
-            <p className="justify-center text-bold text-white text-5xl text-center">有什么可以帮你的</p>
-
+          <div className="w-2/3">
+            <p className="justify-center text-bold text-white text-5xl ">Hi,我是仿DeepSeek！</p>
+                      <div className="h-4"></div>
+            <p className="justify-center text-bold text-gray-300/50 text-2xl ">你身边的智能助手，可以为你答疑解惑、尽情创作，快来点击以下任一功能体验吧</p>
             <div
-              className="flex flex-col items-center  mt-70 mb-10
+              className="flex flex-col items-center  mt-90 mb-10
   h-32 rounded-lg bg-gray-950/10"
             >
               <textarea

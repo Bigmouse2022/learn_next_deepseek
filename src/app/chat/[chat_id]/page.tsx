@@ -86,7 +86,7 @@ export default function Page() {
       <div className="w-4/5 h-screen bg-gray-950/80">
         <div className="flex flex-col h-screen justify-between items-center">
           <div
-            className="flex flex-col w-2/3 gap-8 overflow-y-auto
+            className="flex flex-col w-5/6 gap-8 overflow-y-auto
          justify-between flex-1 no-scrollbar"
           >
             <div className="h-4"></div>
@@ -104,8 +104,8 @@ export default function Page() {
                   <div
                     className={`block p-2 rounded-lg text-white ${
                       message?.role === "assistant"
-                        ? "bg-gray-950/10"
-                        : "bg-gray-950/10"
+                        ? ""
+                        : "bg-gray-700/90"
                     }`}
                   >
                     <Markdown>{message?.content}</Markdown>
