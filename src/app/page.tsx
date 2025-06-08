@@ -58,22 +58,29 @@ export default function Home() {
         <div className="h-screen flex flex-col justify-between  items-center ">
           <div className="h-1/5"></div>
           <div className="w-2/3">
-            <p className="justify-center text-bold text-white text-5xl ">Hi,我是仿DeepSeek！</p>
-                      <div className="h-4"></div>
-            <p className="justify-center text-bold text-gray-300/50 text-2xl ">你身边的智能助手，可以为你答疑解惑、尽情创作，快来点击以下任一功能体验吧</p>
+            <p className="justify-center text-bold text-white text-5xl ">
+              Hi,我是仿DeepSeek！
+            </p>
+            <div className="h-4"></div>
+            <p className="justify-center text-bold text-gray-300/50 text-2xl ">
+              你身边的智能助手，可以为你答疑解惑、尽情创作，快来点击以下任一功能体验吧
+            </p>
+             {/*输入框*/}
+ 
             <div
-              className="flex flex-col items-center  mt-90 mb-10
-  h-32 rounded-lg bg-gray-950/10"
+              className="h-40 flex flex-col items-center  mt-70 mb-10
+  h-32 rounded-2xl bg-gray-950/10 no-scrollbar"
             >
               <textarea
-                className="w-full rounded-lg p-3 focus:outline-none text-white"
+                className="h-35 w-full rounded-2xl p-3 focus:outline-none text-white no-scrollbar"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               ></textarea>
-              <div className="flex flex-row items-center justify-between w-full h-12 mb-2">
+
+              <div className="flex flex-row items-center justify-between w-full h-20 ">
                 <div
-                  className={`flex flex-row items-center justify-center rounded-lg border-[1px]
-            px-2 py-1 ml-2 cursor-pointer 
+                  className={`flex flex-row items-center justify-center rounded-full  border-[1px]
+            px-4 py-1 ml-2 cursor-pointer ml-4
             ${
               model === "deepseek-r1"
                 ? "border-gray-300 bg-gray-700"
@@ -84,7 +91,7 @@ export default function Home() {
                   <p className="text-sm text-white">深度思考{model} </p>
                 </div>
                 <div
-                  className="flex items-center justify-center border-2 mr-4 border-black p-1 
+                  className="flex items-center justify-center border-2 border-white p-1  h-7 w-7 mr-5 
           rounded-full text-white"
                   onClick={handleSubmit}
                 >
